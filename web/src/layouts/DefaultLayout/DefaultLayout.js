@@ -1,7 +1,8 @@
-import { routes, navigate, Link } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
-import Logo from 'src/components/Logo'
+import { routes, navigate, Link } from '@redwoodjs/router'
+
 import { LogoutIcon } from 'src/components/Icons'
+import Logo from 'src/components/Logo'
 
 const truncate = (text, length = 50) => {
   if (typeof text !== 'string') return ''
@@ -21,11 +22,11 @@ const DefaultLayout = ({ children }) => {
       <button
         onClick={() => navigate(routes.profile())}
         to="login"
-        className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+        className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
       >
         {truncate(currentUser?.address, 7)}
       </button>
-      <button className="ml-4 rw-button rw-button-small" onClick={onLogOut}>
+      <button className="rw-button rw-button-small ml-4" onClick={onLogOut}>
         Logout
         <div className="ml-2">
           <LogoutIcon color="#718096" />
@@ -37,7 +38,7 @@ const DefaultLayout = ({ children }) => {
       <button
         onClick={() => navigate(routes.login())}
         to="login"
-        className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700"
+        className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-blue-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700"
       >
         Log in
       </button>
@@ -45,10 +46,10 @@ const DefaultLayout = ({ children }) => {
   )
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col">
       <header className="relative bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center border-b-2 border-gray-100 py-6  md:space-x-10">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="flex items-center justify-between border-b-2 border-gray-100 py-6  md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
               <Link to="/">
                 <Logo />
@@ -58,17 +59,18 @@ const DefaultLayout = ({ children }) => {
           </div>
         </div>
       </header>
-      <div className="rw-main mt-4 flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="rw-main mx-auto mt-4 w-full max-w-7xl flex-grow px-4 sm:px-6">
         {children}
       </div>
 
       <footer>
-        <div className="mt-8 relative bg-gray-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div className="relative mt-8 bg-gray-100">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
               <div className="flex justify-start  lg:w-0 lg:flex-1">
                 <p className="mr-4">
-                  © {new Date().getFullYear()} One Click Dapp
+                  © {new Date().getFullYear()} RedwoodJS + Ethereum Template
+                  [WEB 3]
                 </p>
                 <p>
                   Made with{' '}
@@ -76,6 +78,7 @@ const DefaultLayout = ({ children }) => {
                     className="text-blue-600"
                     target="_blank"
                     href="https://redwoodjs.com"
+                    rel="noreferrer"
                   >
                     RedwoodJS
                   </a>
@@ -84,16 +87,9 @@ const DefaultLayout = ({ children }) => {
                     className="text-blue-600"
                     target="_blank"
                     href="https://github.com/oneclickdapp/ethereum-auth"
+                    rel="noreferrer"
                   >
                     @oneclickdapp/ethereum-auth
-                  </a>
-                  {' by '}
-                  <a
-                    href="https://twitter.com/pi0neerpat"
-                    className="text-blue-600"
-                    target="_blank"
-                  >
-                    @pi0neerpat
                   </a>
                 </p>
               </div>

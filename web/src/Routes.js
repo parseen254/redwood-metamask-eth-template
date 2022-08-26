@@ -1,12 +1,13 @@
 import { Set, Router, Route, Private } from '@redwoodjs/router'
 
-import Loader from 'src/components/Loader'
 import DefaultLayout from 'src/layouts/DefaultLayout'
+
+import Loader from './components/Loader/Loader'
 
 const Routes = () => {
   return (
     <Router>
-      <Set wrap={DefaultLayout}>
+      <Set wrap={DefaultLayout} whileLoadingPage={Loader}>
         <Route path="/" page={HomePage} name="home" />
         <Route path="/login" page={LoginPage} name="login" />
         <Private unauthenticated="login">

@@ -1,8 +1,9 @@
-import { Link, routes, navigate } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
+import { routes, navigate } from '@redwoodjs/router'
 import { useParams } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
-import { MobileWalletIcon, MetamaskIcon } from 'src/components/Icons'
+
+import { MetamaskIcon } from 'src/components/Icons'
 
 const LoginPage = () => {
   const { logIn } = useAuth()
@@ -25,14 +26,14 @@ const LoginPage = () => {
         /* you should un-comment description and add a unique description, 155 characters or less
     You can look at this documentation for best practices : https://developers.google.com/search/docs/advanced/appearance/good-titles-snippets */
       />
-      <h1 className="text-xl tracking-tight font-extrabold text-gray-900 sm:text-2xl md:text-3xl">
+      <h1 className="text-xl font-extrabold tracking-tight text-gray-900 sm:text-2xl md:text-3xl">
         Login
       </h1>
       <ul>
         <li>
           <button
             className={
-              'mt-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border rounded-md shadow-sm text-base font-medium hover:bg-gray-300'
+              'mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-md border px-4 py-2 text-base font-medium shadow-sm hover:bg-gray-300'
             }
             onClick={onLogin}
           >
@@ -40,19 +41,6 @@ const LoginPage = () => {
               <MetamaskIcon />
             </div>
             Log in with Ethereum
-          </button>
-        </li>
-        <li>
-          <button
-            className={
-              'mt-4 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border rounded-md shadow-sm text-base font-medium hover:bg-gray-300'
-            }
-            onClick={() => onLogin('walletConnect')}
-          >
-            <div className="mr-4">
-              <MobileWalletIcon />
-            </div>
-            Log in with Wallet Connect
           </button>
         </li>
       </ul>

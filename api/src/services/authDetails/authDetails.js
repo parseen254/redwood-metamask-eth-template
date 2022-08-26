@@ -1,4 +1,1 @@
-
-export const authDetails = ({}) => {
-  // TODO: implement
-}
+export const authDetails = () => {}
