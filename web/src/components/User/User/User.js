@@ -1,8 +1,6 @@
-import humanize from 'humanize-string'
-
-import { Link, routes, navigate } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
+import { Link, routes, navigate } from '@redwoodjs/router'
 
 const DELETE_USER_MUTATION = gql`
   mutation DeleteUserMutation($id: String!) {
@@ -11,17 +9,6 @@ const DELETE_USER_MUTATION = gql`
     }
   }
 `
-
-const formatEnum = (values) => {
-  if (values) {
-    if (Array.isArray(values)) {
-      const humanizedValues = values.map((value) => humanize(value))
-      return humanizedValues.join(', ')
-    } else {
-      return humanize(values)
-    }
-  }
-}
 
 const jsonDisplay = (obj) => {
   return (
@@ -33,11 +20,9 @@ const jsonDisplay = (obj) => {
 
 const timeTag = (datetime) => {
   return (
-    datetime && (
-      <time dateTime={datetime} title={datetime}>
-        {new Date(datetime).toUTCString()}
-      </time>
-    )
+    <time dateTime={datetime} title={datetime}>
+      {new Date(datetime).toUTCString()}
+    </time>
   )
 }
 
@@ -50,9 +35,6 @@ const User = ({ user }) => {
     onCompleted: () => {
       toast.success('User deleted')
       navigate(routes.users())
-    },
-    onError: (error) => {
-      toast.error(error.message)
     },
   })
 
@@ -87,21 +69,6 @@ const User = ({ user }) => {
           </tbody>
         </table>
       </div>
-      <nav className="rw-button-group">
-        <Link
-          to={routes.editUser({ id: user.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <button
-          type="button"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(user.id)}
-        >
-          Delete
-        </button>
-      </nav>
     </>
   )
 }
